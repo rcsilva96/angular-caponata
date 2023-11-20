@@ -1,5 +1,6 @@
 const express = require('express')
 const conectarDB = require('./config/db');
+const cors = require('cors');
 
 // Criar o servidor
 
@@ -8,6 +9,7 @@ const app = express();
 // Conectar a Base de dados
 
 conectarDB();
+app.use(cors())
 
 app.use(express.json());
 

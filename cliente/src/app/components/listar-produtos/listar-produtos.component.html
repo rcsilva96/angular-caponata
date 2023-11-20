@@ -8,11 +8,11 @@
 
         <div class="card-body text-center">
 
-          <span class="titulo">Lista de produtos</span>
+          <span class="titulo"> LISTA DE PRODUTOS </span>
 
           <button class="btn btn-success float-end" routerLink="/criar-produto">Novo produto</button>
 
-          <table class="table table-striped mt-2">
+          <table *ngIf="listProdutos.length > 0" class="table table-striped mt-2">
             <thead>
               <tr>
                 <th scope="col">Nome</th>
@@ -23,38 +23,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">Caponata</th>
-                <td>Antepasto</td>
-                <td>Estoque</td>
-                <td>25,00</td>
+              <tr *ngFor="let produto of listProdutos">
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.categoria }}</td>
+                <td>{{ produto.local }}</td>
+                <td>{{ produto.preco | currency:'BRL'}}</td>
                 <td>
-                  <i class="fas fa-edit text-primary"></i>
-                  <i class="fas fa-trash text-danger"></i>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Homus</th>
-                <td>Molhos</td>
-                <td>Estoque/td>
-                <td>15,00</td>
-                <td>
-                  <i class="fas fa-edit text-primary"></i>
-                  <i class="fas fa-trash text-danger"></i>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Bolo de maçã</th>
-                <td>Sobremesa</td>
-                <td>Produção</td>
-                <td>30,00</td>
-                <td>
-                  <i class="fas fa-edit text-primary"></i>
-                  <i class="fas fa-trash text-danger"></i>
+                  <i [routerLink]="['/editar-produto', produto._id]" class="fas fa-edit text-primary"></i>
+                  <i (click)="deletarProduto(produto._id)" class="fas fa-trash text-danger"></i>
                 </td>
               </tr>
             </tbody>
           </table>
+
+          <h5 style="text-align: start; margin-top: 10px" *ngIf="listProdutos.length == 0">Não há produtos para exibir!</h5>
 
         </div>
 
