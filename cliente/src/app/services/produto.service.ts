@@ -34,4 +34,14 @@ export class ProdutoService {
     return this.http.put(this.url + id, produto)
   }
 
+  buscarProdutoPorCodigoBarras(codBarras: number): Observable<any> {
+    return this.http.get(this.url + 'buscar-por-codigo/' + codBarras);
+  }
+
+  concluirVenda(id: string, quantidadeVendida: number): Observable<any> {
+    const vendaData = { qtdeVendida: quantidadeVendida };
+
+    return this.http.put(`${this.url}concluir-venda/${id}`, vendaData);
+  }
+
 }

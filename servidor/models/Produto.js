@@ -14,6 +14,14 @@ const ProdutoSchema = mongoose.Schema({
         type: String,
         required: true
     }, 
+    codBarras: {
+        type: Number,
+        required: true
+    },     
+    qtdeEstoque: {
+        type: Number,
+        required: true
+    }, 
     preco: {
         type: Number,
         required: true

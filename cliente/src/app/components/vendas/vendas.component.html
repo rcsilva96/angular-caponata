@@ -10,6 +10,32 @@
 
 	        <span class="titulo"> VENDAS </span>
 
+          <form [formGroup]="vendasForm" (ngSubmit)="buscarProduto()">
+            <label for="codBarras">Código de Barras:</label>
+            <input type="text" id="codBarras" formControlName="codBarras" (keyup)="verificarCodigoBarras()" />
+
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" formControlName="preco" [readonly]="!vendasForm.get('codigoBarras')?.value"/>
+
+            <button type="submit" [disabled]="vendasForm.invalid">Adicionar Produto</button>
+
+            <div *ngIf="produtosComprados.length > 0">
+              <h4>Produtos Comprados:</h4>
+              <ul>
+                <li *ngFor="let produto of produtosComprados">
+                  {{ produto.nome }} - {{ produto.preco | currency:'BRL' }}
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4>Total da Compra: {{ totalCompra | currency:'BRL' }}</h4>
+            </div>
+
+          </form>
+
+          <button type="button" (click)="concluirCompra()">Concluir Compra</button>
+
         </div>
 
       </div>

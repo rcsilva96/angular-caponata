@@ -28,11 +28,21 @@
             </div>
 
             <div class="mb-3">
+              <input type="number" class="form-control form-control-lg" formControlName="codBarras" placeholder="Código de barras">
+              <div class="text-danger" *ngIf="produtoForm.get('codBarras')?.hasError('required') && produtoForm.get('codBarras')?.touched">Por favor, insira o preço do produto</div>
+            </div>
+
+            <div class="mb-3">
+              <input type="number" class="form-control form-control-lg" formControlName="qtdeEstoque" placeholder="Quantidade em estoque">
+              <div class="text-danger" *ngIf="produtoForm.get('qtdeEstoque')?.hasError('required') && produtoForm.get('qtdeEstoque')?.touched">Por favor, insira o preço do produto</div>
+            </div>
+
+            <div class="mb-3">
               <input type="number" class="form-control form-control-lg" formControlName="preco" placeholder="Preço">
               <div class="text-danger" *ngIf="produtoForm.get('preco')?.hasError('required') && produtoForm.get('preco')?.touched">Por favor, insira o preço do produto</div>
             </div>
 
-            <button class="btn btn-lg btn-secondary float-start" routerLink="/listar-produtos">Voltar</button>
+            <button class="btn btn-lg btn-secondary float-start" routerLink="/estoque">Voltar</button>
             <button type="submit" [disabled]="produtoForm.invalid" class="btn btn-lg btn-success float-end">Salvar</button>
 
           </form>

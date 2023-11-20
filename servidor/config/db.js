@@ -10,7 +10,7 @@ const conectarDB = async () => {
             // useUnifiedTopology: true,
             // useFindAndModify: false
 
-            // Essas funções não tem mais efeito desde o driver nodejs v4.0.0 e será removida futuramente
+            // Essas funções não tem mais efeito desde o driver nodejs v4.0.0 e serão removida futuramente
             })
 
             console.log('Base de dados conectada!');

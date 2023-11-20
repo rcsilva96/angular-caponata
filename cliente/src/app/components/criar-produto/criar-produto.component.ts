@@ -25,6 +25,8 @@ export class CriarProdutoComponent implements OnInit {
       produto: ['', Validators.required],
       categoria: ['', Validators.required],
       local: ['', Validators.required],
+      codBarras: ['', Validators.required],
+      qtdeEstoque: ['', Validators.required],
       preco: ['', Validators.required],
 
     })
@@ -46,6 +48,8 @@ export class CriarProdutoComponent implements OnInit {
       nome: this.produtoForm.get('produto')?.value,
       categoria: this.produtoForm.get('categoria')?.value,
       local: this.produtoForm.get('local')?.value,
+      codBarras: this.produtoForm.get('codBarras')?.value,
+      qtdeEstoque: this.produtoForm.get('qtdeEstoque')?.value,
       preco: this.produtoForm.get('preco')?.value,
 
     }
@@ -57,7 +61,7 @@ export class CriarProdutoComponent implements OnInit {
       this._produtoService.editarProduto(this.id, PRODUTO).subscribe(data => {
 
         console.log('Produto editado com sucesso!');
-        this.router.navigate(['/']);
+        this.router.navigate(['/estoque']);
 
       }, error => {
         console.log(error);
@@ -76,7 +80,7 @@ export class CriarProdutoComponent implements OnInit {
         console.log(error);
         this.produtoForm.reset();
       })
-      this.router.navigate(['/']);
+      this.router.navigate(['/estoque']);
 
     }
 
@@ -91,6 +95,8 @@ export class CriarProdutoComponent implements OnInit {
           produto: data.nome,
           categoria: data.categoria,
           local: data.local,
+          codBarras: data.codBarras,
+          qtdeEstoque: data.qtdeEstoque,
           preco: data.preco
 
         })
