@@ -1,0 +1,48 @@
+<div class="container mt-5">
+
+  <div class="row">
+
+    <div class="col-lg-8 offset-lg-2">
+
+      <div class="card">
+
+        <div class="card-body text-center">
+
+          <span class="titulo">Novo produto</span>
+
+          <form class="mt-3" [formGroup]="produtoForm" (ngSubmit)="adicionarProduto()">
+
+            <div class="mb-3">
+              <input type="text" class="form-control form-control-lg" formControlName="produto" placeholder="Produto">
+              <div class="text-danger" *ngIf="produtoForm.get('produto')?.hasError('required') && produtoForm.get('produto')?.touched">Por favor, insira o nome do produto</div>
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control form-control-lg" formControlName="categoria" placeholder="Categoria">
+              <div class="text-danger" *ngIf="produtoForm.get('categoria')?.hasError('required') && produtoForm.get('categoria')?.touched">Por favor, insira a categoria do produto</div>
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control form-control-lg" formControlName="local" placeholder="Local">
+              <div class="text-danger" *ngIf="produtoForm.get('local')?.hasError('required') && produtoForm.get('local')?.touched">Por favor, insira o local do produto</div>
+            </div>
+
+            <div class="mb-3">
+              <input type="number" class="form-control form-control-lg" formControlName="preco" placeholder="Preço">
+              <div class="text-danger" *ngIf="produtoForm.get('preco')?.hasError('required') && produtoForm.get('preco')?.touched">Por favor, insira o preço do produto</div>
+            </div>
+
+            <button class="btn btn-lg btn-secondary float-start" routerLink="/listar-produtos">Voltar</button>
+            <button type="submit" [disabled]="produtoForm.invalid" class="btn btn-lg btn-success float-end">Salvar</button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
